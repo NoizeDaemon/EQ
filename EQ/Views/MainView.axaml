@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+			 xmlns:vm="using:EQ.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="EQ.Views.MainView"
+             x:DataType="vm:MainViewModel"
+             x:CompileBindings="True"
+	         Foreground="#171C2C"
+	         Background="White">
+	<!--<Design.DataContext>
+    --><!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) --><!--
+    <viewModels:MainViewModel />
+  </Design.DataContext>-->
+
+	<!--<m:FormulaBlock Formula="x + 2 \sqrt{x} + 1 = (\sqrt x+1)^2" />-->
+	<Grid ColumnDefinitions="*,*" RowDefinitions="50,*" Margin="10">
+		<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"
+				   Text="With ZeroPaint and ObservablePoints at the end:"/>
+		<TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+				   Text="With LineSeries for Axes and DataLabels:"/>
+		<lvc:CartesianChart x:Name="CoordinateSystem1" Grid.Row="1" Grid.Column="0" Width="{Binding $self.Bounds.Height}" MinHeight="400"
+							Series="{Binding Series1}"
+							XAxes="{Binding XAxes1}"
+							YAxes="{Binding YAxes1}"
+							CornerRadius="5"/>
+		<lvc:CartesianChart x:Name="CoordinateSystem2" Grid.Row="1" Grid.Column="1" Width="{Binding $self.Bounds.Height}" MinHeight="400"
+						Series="{Binding Series2}"
+						XAxes="{Binding XAxes2}"
+						YAxes="{Binding YAxes2}"
+						CornerRadius="5"
+						EasingFunction="{x:Null}"/>
+	</Grid>
+
+</UserControl>
